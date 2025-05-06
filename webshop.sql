@@ -138,7 +138,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`),
   KEY `cat_id` (`cat_id`),
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`cat_id`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +147,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Intel Core Ultra 7 265K','Intel Prozessor der neusten Generation',419.99,1,100);
+INSERT INTO `products` VALUES (1,'Intel Core Ultra 7 265K','Intel Prozessor der neusten Generation',419.99,1,100),(2,'Intel Core Ultra 9 285K','Intel Prozessor der neusten Generation',649.99,1,50),(3,'Intel Core Ultra 5 245K','Intel Prozessor der neusten Generation',299.99,1,150),(4,'AMD Ryzen 7 9800X3D','AMD Prozessor der neusten Generation mit 3DV-Cache',499.99,1,150),(5,'AMD Ryzen 9 9950X3D','AMD Prozessor der neusten Generation mit 3DV-Cache',699.99,1,150),(6,'AMD Ryzen 9 9900X3D','AMD Prozessor der neusten Generation mit 3DV-Cache',599.99,1,150);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -160,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-25 13:50:43
+-- Dump completed on 2025-05-06 13:18:51
