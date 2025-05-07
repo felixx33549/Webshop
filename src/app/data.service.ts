@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  private apiUrl = 'http://167.235.21.222:3000/data';
+  private apiUrl = 'http://167.235.21.222:3000/products';
 
   constructor(private http: HttpClient) { }
 
