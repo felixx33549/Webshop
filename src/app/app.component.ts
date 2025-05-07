@@ -3,10 +3,11 @@ import { DataService } from './data.service';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductComponent } from './product/product.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, HttpClientModule],
+  imports: [RouterOutlet, CommonModule, HttpClientModule, ProductComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
