@@ -42,3 +42,6 @@ testem.log
 Thumbs.db
 .vscode/
 cache/
+
+#node-js-server
+node-js-server/node_modules
