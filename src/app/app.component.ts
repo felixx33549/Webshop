@@ -4,28 +4,30 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductComponent } from './product/product.component';
+import { MenuItemComponent } from './menu-item/menu-item.component';
+import { HeaderItemComponent } from './header-item/header-item.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, HttpClientModule, ProductComponent],
+  imports: [RouterOutlet, CommonModule, HttpClientModule, ProductComponent, MenuItemComponent, HeaderItemComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'webshop';
-  data: any[] = [];
-  data2: any[] = [];
+  title = 'Webshop';
+  dataProducts: any[] = [];
+  dataCategory: any[] = [];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.dataService.getData().subscribe((data) => {
+    this.dataService.getDataProducts().subscribe((data) => {
       // console.log(data);
-      this.data = data;
+      this.dataProducts = data;
     });
-    this.dataService.getData2().subscribe((data) => {
+    this.dataService.getDataCategory().subscribe((data) => {
       // console.log(data);
-      this.data2 = data;
+      this.dataCategory = data;
     });
   }
 }

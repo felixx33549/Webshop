@@ -6,16 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  private apiUrl = 'http://167.235.21.222:3000/products';
-  private apiUrl2 = 'http://167.235.21.222:3000/category';
+  private apiUrlProducts = 'http://167.235.21.222:3000/products';
+  private apiUrlCategory = 'http://167.235.21.222:3000/category';
 
   constructor(private http: HttpClient) { }
 
-  getData(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getDataProducts(): Observable<any> {
+    return this.http.get<any>(this.apiUrlProducts);
   }
 
-  getData2(): Observable<any> {
-    return this.http.get<any>(this.apiUrl2);
+  getDataCategory(): Observable<any> {
+    return this.http.get<any>(this.apiUrlCategory);
   }
 }
