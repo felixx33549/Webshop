@@ -7,14 +7,26 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const db = mysql.createConnection({
+/* const db = mysql.createConnection({
   host: 'localhost',
   user: 'serveruser',
   password: 'server',
   database: 'webshop'
+}); */
+
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'serveruser',
+  password: 'server',
+  database: 'webshop',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+  enableKeepAlive: true,
+  keepAliveInitialDelay: 10000
 });
 
-db.connect((err) => {
+pool.connect((err) => {
   if (err) {
     throw err;
   }
@@ -23,7 +35,7 @@ db.connect((err) => {
 
 app.get('/data', (req, res) => {
   let sql = 'SHOW tables';
-  db.query(sql, (err, results) => {
+  pool.query(sql, (err, results) => {
     if (err) throw err;
     res.send(results);
   });
@@ -31,7 +43,7 @@ app.get('/data', (req, res) => {
 
 app.get('/products', (req, res) => {
   let sql = 'SELECT * FROM products';
-  db.query(sql, (err, results) => {
+  pool.query(sql, (err, results) => {
     if (err) throw err;
     res.send(results);
   });
@@ -39,7 +51,7 @@ app.get('/products', (req, res) => {
 
 app.get('/category', (req, res) => {
   let sql = 'SELECT * FROM category';
-  db.query(sql, (err, results) => {
+  pool.query(sql, (err, results) => {
     if (err) throw err;
     res.send(results);
   });
