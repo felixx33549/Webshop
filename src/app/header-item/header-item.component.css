@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
-    background-color: rgb(0, 26, 39);
+    background-color: var(--dark-blue);
     padding-left: 8px;
     border-radius: 8px;
 }
@@ -13,5 +13,9 @@
 }
 
 h1 {
-    color: white;
+    color: var(--gray-light);
+    font-size: 3.125rem;
+    line-height: 100%;
+    margin: 0;
+    font-weight: 500;
 }

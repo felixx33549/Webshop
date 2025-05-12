@@ -13,9 +13,12 @@
     <div class="left-side">
       <div class="category-menu">
         <app-menu-item name="Startseite" link=""></app-menu-item>
+        <app-menu-item name="" link=""></app-menu-item>
         @for (item of dataCategory; track item.name) {
         <app-menu-item name="{{ item.name }}" link="{{ item.link }}"></app-menu-item>
         }
+        <app-menu-item name="" link=""></app-menu-item>
+        <app-menu-item name="Impressum" link=""></app-menu-item>
       </div>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
@@ -31,8 +34,7 @@
         @for (item of [
         { title: 'Explore the Docs', link: 'https://angular.dev' },
         { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
-        { title: 'Angular Language Service', link: 'https://angular.dev/tools/language-service' },
-        { title: 'Angular DevTools', link: 'https://angular.dev/tools/devtools' }
+        { title: 'Angular Language Service', link: 'https://angular.dev/tools/language-service' }
         ]; track item.title) {
         <a class="pill" [href]="item.link" target="_blank" rel="noopener">
           <span>{{ item.title }}</span>

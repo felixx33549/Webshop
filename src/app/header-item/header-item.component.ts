@@ -4,7 +4,11 @@ import { Component, Input } from '@angular/core';
   selector: 'app-header-item',
   imports: [],
   templateUrl: './header-item.component.html',
-  styleUrls: ['./header-item.component.css']
+  styleUrls: [
+    '../../styles.css',
+    '../app.component.css',
+    './header-item.component.css'
+  ]
 })
 export class HeaderItemComponent {
   @Input() title: string = 'Title';

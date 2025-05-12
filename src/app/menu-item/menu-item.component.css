@@ -1,4 +1,14 @@
-a{
+.menu-item {
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background-color: var(--gray-400);
+}
+
+a {
     text-decoration: none;
     color: inherit;
 }

@@ -4,7 +4,11 @@ import { Component, Input } from '@angular/core';
   selector: 'app-product',
   imports: [],
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: [
+    '../../styles.css',
+    '../app.component.css',
+    './product.component.css'
+  ]
 })
 export class ProductComponent {
   @Input() name: string = 'Default Product Name';
