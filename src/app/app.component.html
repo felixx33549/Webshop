@@ -10,8 +10,20 @@
 <main class="main">
   <div class="content">
     <div class="left-side">
-      <img src="Computer-Wolf-logo.jpg" alt="Computer Wolf Logo" class="logo" />
-      <h1>{{ title }}</h1>
+      <div style="height: 4cm;"></div>
+      <div class="category-menu">
+        <div><a href="" style="text-decoration: none; color: black;">Home</a></div>
+        @for (item of data2; track item.name) {
+        <div><a href="" style="text-decoration: none; color: black;">{{ item.name }}</a></div>
+        }
+      </div>
+    </div>
+    <div class="divider" role="separator" aria-label="Divider"></div>
+    <div class="middle-side">
+      <div style="display: flex; align-items: center;">
+        <img src="Computer-Wolf-logo.jpg" alt="Computer Wolf Logo" class="logo" style="margin-right: 10px;" />
+        <h1>{{ title }}</h1>
+      </div>
       <p>Hello customer.</p>
       @for (item of data; track item.name) {
       <app-product [name]="item.name" [description]="item.description" [price]="item.price"></app-product>

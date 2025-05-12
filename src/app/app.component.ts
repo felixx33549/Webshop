@@ -14,6 +14,7 @@ import { ProductComponent } from './product/product.component';
 export class AppComponent implements OnInit {
   title = 'webshop';
   data: any[] = [];
+  data2: any[] = [];
 
   constructor(private dataService: DataService) { }
 
@@ -21,6 +22,10 @@ export class AppComponent implements OnInit {
     this.dataService.getData().subscribe((data) => {
       // console.log(data);
       this.data = data;
+    });
+    this.dataService.getData2().subscribe((data) => {
+      // console.log(data);
+      this.data2 = data;
     });
   }
 }
