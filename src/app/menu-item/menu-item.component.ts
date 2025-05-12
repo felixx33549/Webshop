@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-menu-item',
@@ -13,4 +13,9 @@ import { Component, Input } from '@angular/core';
 export class MenuItemComponent {
   @Input() name: string = 'Default Category Name';
   @Input() link: string = '';
+  @Output() categoryClicked = new EventEmitter<void>();
+
+  onCategoryClick(): void {
+    this.categoryClicked.emit();
+  }
 }

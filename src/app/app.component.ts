@@ -9,9 +9,19 @@ import { HeaderItemComponent } from './header-item/header-item.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, HttpClientModule, ProductComponent, MenuItemComponent, HeaderItemComponent],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    HttpClientModule,
+    ProductComponent,
+    MenuItemComponent,
+    HeaderItemComponent
+  ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: [
+    '../styles.css',
+    './app.component.css'
+  ]
 })
 export class AppComponent implements OnInit {
   title = 'Webshop';
@@ -21,13 +31,28 @@ export class AppComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.getAllProducts();
+    this.dataService.getDataCategory().subscribe((data) => {
+      // console.log(data);
+      this.dataCategory = data;
+    });
+  }
+
+  clearDataProducts(): void {
+    this.dataProducts = [];
+  }
+
+  getAllProducts(): void {
     this.dataService.getDataProducts().subscribe((data) => {
       // console.log(data);
       this.dataProducts = data;
     });
-    this.dataService.getDataCategory().subscribe((data) => {
+  }
+
+  getCategoryProducts(category: string): void {
+    this.dataService.getDataProductsByCategory(category).subscribe((data) => {
       // console.log(data);
-      this.dataCategory = data;
+      this.dataProducts = data;
     });
   }
 }
