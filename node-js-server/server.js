@@ -30,8 +30,17 @@ app.get('/data', (req, res) => {
 });
 
 app.get('/products', (req, res) => {
-  const sql = 'SELECT * FROM products';
-  pool.query(sql, (err, results) => {
+  const category = req.query.category;
+
+  let sql = 'SELECT * FROM products';
+  const params = [];
+
+  if (category) {
+    sql += ' WHERE cat_id = ?';
+    params.push(category);
+  }
+
+  pool.query(sql, params, (err, results) => {
     if (err) {
       console.error(err);
       res.status(500).send('Database query failed');
