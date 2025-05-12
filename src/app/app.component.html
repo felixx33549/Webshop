@@ -16,7 +16,7 @@
         <app-menu-item name="Startseite" link="" (categoryClicked)="getAllProducts()"></app-menu-item>
         <app-menu-item name="" link=""></app-menu-item>
         @for (item of dataCategory; track item.name) {
-        <app-menu-item name="{{ item.name }}" link="{{ item.link }}" (categoryClicked)="getCategoryProducts(item.name)"></app-menu-item>
+        <app-menu-item name="{{ item.name }}" link="{{ item.link }}" (categoryClicked)="getCategoryProducts(item.id)"></app-menu-item>
         }
         <app-menu-item name="" link=""></app-menu-item>
         <app-menu-item name="Impressum" link=""></app-menu-item>

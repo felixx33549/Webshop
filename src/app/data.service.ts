@@ -19,7 +19,7 @@ export class DataService {
     return this.http.get<any>(this.apiUrlCategory);
   }
 
-  getDataProductsByCategory(category: string): Observable<any> {
+  getDataProductsByCategory(category: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrlProducts}?category=${category}`);
   }
 }

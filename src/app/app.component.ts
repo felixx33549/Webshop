@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getCategoryProducts(category: string): void {
+  getCategoryProducts(category: number): void {
     this.dataService.getDataProductsByCategory(category).subscribe((data) => {
       // console.log(data);
       this.dataProducts = data;
