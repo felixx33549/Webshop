@@ -8,13 +8,6 @@
     background-color: var(--gray-400);
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button {
-    background: none;
-    border: none;
-    cursor: pointer;
+p {
+    margin: 0;
 }

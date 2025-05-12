@@ -8,23 +8,25 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <main class="main">
-  <app-header-item [title]="title" imgSrc="Computer-Wolf-logo.jpg" (imageClicked)="clearDataProducts()">
+  <app-header-item [title]="title" imgSrc="Computer-Wolf-logo.jpg" (imageClicked)="getAllProducts()">
   </app-header-item>
   <div class="content">
     <div class="left-side">
       <div class="category-menu">
-        <app-menu-item name="Startseite" link="" (categoryClicked)="getAllProducts()"></app-menu-item>
+        <app-menu-item name="Startseite" link="" (categoryClicked)="clearDataProducts()"></app-menu-item>
         <app-menu-item name="" link=""></app-menu-item>
         @for (item of dataCategory; track item.name) {
-        <app-menu-item name="{{ item.name }}" link="{{ item.link }}" (categoryClicked)="getCategoryProducts(item.id)"></app-menu-item>
+        <app-menu-item name="{{ item.name }}" link="{{ item.link }}"
+          (categoryClicked)="getCategoryProducts(item.id)"></app-menu-item>
         }
         <app-menu-item name="" link=""></app-menu-item>
-        <app-menu-item name="Impressum" link=""></app-menu-item>
+        <app-menu-item name="Impressum" link="" (categoryClicked)="onImpressumClick()"></app-menu-item>
       </div>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="middle-side">
-      <p>Hallo Besucher!</p>
+      <h2>{{headline}}</h2>
+      <p [innerHTML]="message"></p>
       @for (item of dataProducts; track item.name) {
       <app-product [name]="item.name" [description]="item.description" [price]="item.price"></app-product>
       }

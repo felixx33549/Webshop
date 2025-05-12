@@ -27,11 +27,13 @@ export class AppComponent implements OnInit {
   title = 'Webshop';
   dataProducts: any[] = [];
   dataCategory: any[] = [];
+  headline: string = 'Hallo Besucher!';
+  message: string = 'Willkommen bei Computer Wolf.';
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.getAllProducts();
+    //this.getAllProducts();
     this.dataService.getDataCategory().subscribe((data) => {
       // console.log(data);
       this.dataCategory = data;
@@ -40,6 +42,8 @@ export class AppComponent implements OnInit {
 
   clearDataProducts(): void {
     this.dataProducts = [];
+    this.headline = 'Hallo Besucher!';
+    this.message = 'Willkommen bei Computer Wolf.';
   }
 
   getAllProducts(): void {
@@ -47,6 +51,8 @@ export class AppComponent implements OnInit {
       // console.log(data);
       this.dataProducts = data;
     });
+    this.headline = 'Alle Produkte';
+    this.message = '';
   }
 
   getCategoryProducts(category: number): void {
@@ -54,5 +60,18 @@ export class AppComponent implements OnInit {
       // console.log(data);
       this.dataProducts = data;
     });
+    this.headline = 'Produkte der Kategorie ' + category;
+    this.message = '';
+  }
+
+  onImpressumClick(): void {
+    this.dataProducts = [];
+    this.headline = 'Impressum';
+    this.message = 'Computer Wolf<br><br>' +
+      'Inhaber: Felix Leuchtmann<br>' +
+      'Östliche Rheinbrückenstraße 50<br>' +
+      '76187 Karlsruhe<br>' +
+      'Tel: 01234/56789<br>' +
+      'E-Mail: info@computer-wolf.de';
   }
 }
