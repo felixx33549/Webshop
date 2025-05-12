@@ -7,13 +7,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-/* const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'serveruser',
-  password: 'server',
-  database: 'webshop'
-}); */
-
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'serveruser',
@@ -21,38 +14,41 @@ const pool = mysql.createPool({
   database: 'webshop',
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0,
-  enableKeepAlive: true,
-  keepAliveInitialDelay: 10000
-});
-
-pool.connect((err) => {
-  if (err) {
-    throw err;
-  }
-  console.log('MySQL Connected...');
+  queueLimit: 0
 });
 
 app.get('/data', (req, res) => {
-  let sql = 'SHOW tables';
+  const sql = 'SHOW tables';
   pool.query(sql, (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      res.status(500).send('Database query failed');
+      return;
+    }
     res.send(results);
   });
 });
 
 app.get('/products', (req, res) => {
-  let sql = 'SELECT * FROM products';
+  const sql = 'SELECT * FROM products';
   pool.query(sql, (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      res.status(500).send('Database query failed');
+      return;
+    }
     res.send(results);
   });
 });
 
 app.get('/category', (req, res) => {
-  let sql = 'SELECT * FROM category';
+  const sql = 'SELECT * FROM category';
   pool.query(sql, (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      res.status(500).send('Database query failed');
+      return;
+    }
     res.send(results);
   });
 });
