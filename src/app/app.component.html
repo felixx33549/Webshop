@@ -8,13 +8,14 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <main class="main">
-  <app-header-item [title]="title" imgSrc="Computer-Wolf-logo.jpg" (imageClicked)="getAllProducts()">
+  <app-header-item [title]="title" imgSrc="Computer-Wolf-logo.jpg" (imageClicked)="clearDataProducts()">
   </app-header-item>
   <div class="content">
     <div class="left-side">
       <div class="category-menu">
         <app-menu-item name="Startseite" link="" (categoryClicked)="clearDataProducts()"></app-menu-item>
         <app-menu-item name="" link=""></app-menu-item>
+        <app-menu-item name="Alle Produkte" link="" (categoryClicked)="getAllProducts()"></app-menu-item>
         @for (item of dataCategory; track item.name) {
         <app-menu-item name="{{ item.name }}" link="{{ item.link }}"
           (categoryClicked)="getCategoryProducts(item.id)"></app-menu-item>
@@ -27,24 +28,37 @@
     <div class="middle-side">
       <h2>{{headline}}</h2>
       <p [innerHTML]="message"></p>
-      @for (item of dataProducts; track item.name) {
-      <app-product [name]="item.name" [description]="item.description" [price]="item.price"></app-product>
-      }
+      <div class="product-list" *ngIf="displayContent==='product'">
+        @for (item of dataProducts; track item.name) {
+        <app-product [name]="item.name" [description]="item.description" [price]="item.price" [quantity]="item.stock"
+          (addToCardClicked)="addToCard(item)"></app-product>
+        }
+      </div>
+      <div class="account-list" *ngIf="displayContent==='account'">
+        <app-account-item></app-account-item>
+      </div>
+      <div class="card-list" *ngIf="displayContent==='card'">
+        @for (item of card; track item.name) {
+        <app-card-item [name]="item.name" [price]="item.price" [quantity]="item.quantity"
+          (removeFromCardClicked)="removeFromCard(item)"></app-card-item>
+        }
+        <div class="total-price">
+          <p>Gesamtpreis: {{ totalPrice }}€</p>
+          <button class="buy-button">Bezahlen</button>
+        </div>
+      </div>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
       <div class="pill-group">
         @for (item of [
-        { title: 'Explore the Docs', link: 'https://angular.dev' },
-        { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
-        { title: 'Angular Language Service', link: 'https://angular.dev/tools/language-service' }
+        { title: 'Login'},
+        { title: 'Account'},
+        { title: 'Warenkorb', count: card.length }
         ]; track item.title) {
-        <a class="pill" [href]="item.link" target="_blank" rel="noopener">
+        <a class="pill" (click)="pillClick(item.title)">
           <span>{{ item.title }}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14" fill="currentColor">
-            <path
-              d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
-          </svg>
+          <span *ngIf="item.count"> ({{ item.count }})</span>
         </a>
         }
       </div>

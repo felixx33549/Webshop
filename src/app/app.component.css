@@ -30,6 +30,15 @@ main {
     padding-right: 2rem;
 }
 
+.total-price {
+    display: flex;
+    justify-content: space-around;
+}
+
+.total-price p {
+    margin-left: auto;
+}
+
 .divider {
     width: 0.15rem;
     background: var(--red-to-pink-to-purple-vertical-gradient);
@@ -81,8 +90,18 @@ main {
     --pill-accent: var(--hot-red);
 }
 
-.pill-group svg {
-    margin-inline-start: 0.25rem;
+button {
+    background-color: var(--dark-blue);
+    color: var(--gray-light);
+    border: none;
+    padding: 8px 15px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--bright-blue);
 }
 
 /* @media screen and (max-width: 650px) {
